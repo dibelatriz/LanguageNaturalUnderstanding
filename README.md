@@ -1,18 +1,23 @@
-# LanguageNaturalUnderstanding
-<h6>Uma introdução básica sobre o Processamento da Linguagem Natural (PLN). O PLN é composto de diversas técnicas que possibilitam a interpretação textual de forma automática, independentemente do tamanho do documento.</h6>
-<p>Para executar as demais funcionalidades: <br>
-
-O primeiro bloco, são importados os módulos json e, a partir de watson_developer_cloud, o procedimento NaturalLanguageUnderstandingV1.
-  
-<!-- Para verificar os módulos criados a serem importados, apertar tab após a palavra import, será exibida uma lista de módulos para importar. -->
-  
-O segundo bloco, as caracteristicas do texto serão extraídas.
-Além das características (Features) importadas, estão disponiveis como Palavra Chave (KeywordsOptions) e metaDados (MetadataOptions).</p><br>
-
+# Identificação da Linguagem Natural
+<h3> LanguageNaturalUnderstanding</h3>
+<h6>Uma introdução básica sobre o Processamento da Linguagem Natural (PLN). O PLN é composto de diversas técnicas que possibilitam a interpretação textual de forma automática, independentemente do tamanho do documento. Então, let's go!</h6>
+<p> I) Ajuste seu ambiente Python, gerenciador de pacotes, PIP e Jupyter. <br>
+    II) Instale o módulo de acesso à API entre parenteses
+      (pip install --upgrade watson-developer-cloud) <br>
+    III) Acesse sua API <br>
+  IV) Inicie o carregamentos dos módulos. E utilizaremos basicamente dois módulos: json e watson_developer_cloud</p><br>
+<p>O primeiro (json) é utilizado para manipular as informações retornadas pela API. O formato jason (Javascript Object Notation) é amplamente utilizado em acessos a serviços. Ele é equivalente ao tipo dicionário do Python, isto é, um conjunto de um ou mais chave-valor. Já o módulo watson_developer_cloud contém os métodos e tipos necessários para acesso às diversas APIS do Watson.</p><br>
+<h6>Vamos executar o código.</h6>
 import json
 from watson_developer_cloud import NaturalLanguageUnderstandingV1 
 from watson_developer_cloud.natural_language_understanding_v1 import 
 Features, ConceptsOptions, RelationsOptions, EmotionOptions, EntitiesOptions, SemanticRolesOptions, SentimentOptions
+
+<br><p> O primeiro bloco, são importados os módulos json e, a partir de watson_developer_cloud, o procedimento NaturalLanguageUnderstandingV1.  
+O segundo bloco, as caracteristicas do texto serão extraídas.
+Além das características (Features) importadas, estão disponiveis como Palavra Chave (KeywordsOptions) e metaDados (MetadataOptions).</p><br>
+<p>Observação: Para verificar todas as opções de módulos a serem importados, apertar tab após a palavra import, será exibida uma lista de módulos para importar.</p>
+<p>Para executar as demais funcionalidades: <br>
 
 <!-- Instanciar um objeto -->
 <h4> Instanciar um objeto de acesso à API.</h4>
@@ -21,11 +26,13 @@ natural_language_understanding = NaturalLanguageUnderstandingV1( <br>
   password='aqui_sua_senha', <br>
   version='2021-08-17') <br>
   
-<!-- Informações disponiveis sobre o serviço habilitado na seção de credenciais. -->
+<p>As informações acima estão disponiveis sobre o serviço habilitado na seção de credenciais (credentials).</p><br>
+
 <h4>Para consultar a API</h4>
-<p>O metodo analyze é chamado, o seu retorno é posto com variavel response.
+<p>O metodo analyze é chamado, o seu retorno é posto com variavel response. O retorno da API, colocado em response, está estruturado como um dicionário.<p>
+  
 response = natural_language_understanding.analyze(  <br>
-  text='Who is the prime minister of England?',  <br>
+  text='Who is the primer minister of England?',  <br>
   features=Features(   <br>
     concepts=ConceptsOptions(), <br>
     emotion=EmotionOptions(), <br>
@@ -34,75 +41,27 @@ response = natural_language_understanding.analyze(  <br>
     )) 
   <br>
   
-<!--Para visualizar melhor o retorno -->
+Para visualizar melhor o retorno, utilize o código em seguida:
   print(json.dumps(response, indent=2))
   <br>
-  <p>As caracteristicas abaixo foram referenciadas no dicionário na linha da citação após Features.</p>
+  <p>Vamos ao resultado! O código abaixo, observe que as caracteristicas são sentimentos relacionado a pergunta feita, observe também que como se trata de uma pergunta os resultados estão neutros. Cada chave na raiz foi referenciadas no dicionário na linha da citação após Features na chamada à API.</p>
 
-{
-  "emotion": {
-    "document": {
-      "emotion": {
-        "anger": 0.149442, 
-        "joy": 0.151672, 
-        "sadness": 0.117418, 
-        "fear": 0.047087, 
-        "disgust": 0.198362
-      }
-    }
-  }, 
-  "sentiment": {
-    "document": {
-      "score": 0.0, 
-      "label": "neutral"
-    }
-  }, 
-  "language": "en", 
-  "entities": [
-    {
-      "relevance": 0.33, 
-      "text": "president", 
-      "type": "JobTitle", 
-      "count": 1
-    }, 
-    {
-      "relevance": 0.33, 
-      "text": "Brazil", 
-      "disambiguation": {
-        "subtype": [
-          "GovernmentalJurisdiction", 
-          "CompanyShareholder", 
-          "Country"
-        ], 
-        "name": "Brazil", 
-        "dbpedia_resource": "http://dbpedia.org/resource/Brazil"
-      }, 
-      "type": "Location", 
-      "count": 1
-    }
-  ], 
-  "concepts": [
-    {
-      "relevance": 0.886784, 
-      "text": "President", 
-      "dbpedia_resource": "http://dbpedia.org/resource/President"
-    }, 
-    {
-      "relevance": 0.862208, 
-      "text": "President of the United States", 
-      "dbpedia_resource": "http://dbpedia.org/resource/President_of_the_United_States"
-    }, 
-    {
-      "relevance": 0.845824, 
-      "text": "Politics of Brazil", 
-      "dbpedia_resource": "http://dbpedia.org/resource/Politics_of_Brazil"
-    }
-  ], 
-  "usage": {
-    "text_characters": 31, 
-    "features": 5, 
-    "text_units": 1
-  }
-}
+{     <br>
+  "emotion": {     <br>
+    "document": {        <br>
+      "emotion": {      <br>
+        "anger": 0.149442,  <br>
+        "joy": 0.151672,     <br>
+        "sadness": 0.117418,   <br>
+        "fear": 0.047087,      <br> 
+        "disgust": 0.198362     <br>
+      }     <br>
+    }   <br>
+  },   <br>
+}   <br>
+<p>Essa pequena demonstração de código é um exemplo pois, o resultado é muito extenso, aproveite para testar você também.</p>
 
-<!-- Como se trata de uma pergunta os resultados estão neutros. -->
+<p>A inteligência artificial identifica o sentimento do usuário seja positivo, negativo ou neutro. Além dessa Análise de Sentimentos existe diversas tarefas realizadas pelo PLN, irei citar algumas:</p>
+<p>Análise: Parsing Sintático, Parsing Discursivo, Etiquetação morfossintática e Identificação de entidades. </p>
+<p>Transformação: Tradução instantanea de idiomas e Sumarização automática.</p>
+<p>Geração textual: Consiste em colocar em linguagem natural algum conhecimento em alguma base de conhecimento.</p>
