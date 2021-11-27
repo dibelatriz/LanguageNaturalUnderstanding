@@ -1,12 +1,16 @@
-# Identificação da Linguagem Natural
+# Interpretação da Linguagem Natural
 <h3> LanguageNaturalUnderstanding</h3>
+<h5>Compartilho com vocês um pouco do meu aprendizado sobre a Interpretação da Linguagem Humana e como o computador interpreta nossas emoções pela escrita.</h5>
 <h6>Uma introdução básica sobre o Processamento da Linguagem Natural (PLN). O PLN é composto de diversas técnicas que possibilitam a interpretação textual de forma automática, independentemente do tamanho do documento. Então, let's go!</h6>
 <p> I) Ajuste seu ambiente Python, gerenciador de pacotes, PIP e Jupyter. <br>
-    II) Instale o módulo de acesso à API entre parenteses
+    II) Habilite o serviço de interpretação textual <br>
+    III) Anote suas credenciais pois, elas serão muito importantes para habilitar sua API. <br>
+    IV) Instale o módulo de acesso à API entre parenteses
       (pip install --upgrade watson-developer-cloud) <br>
-    III) Acesse sua API <br>
-  IV) Inicie o carregamentos dos módulos. E utilizaremos basicamente dois módulos: json e watson_developer_cloud</p><br>
-<p>O primeiro (json) é utilizado para manipular as informações retornadas pela API. O formato jason (Javascript Object Notation) é amplamente utilizado em acessos a serviços. Ele é equivalente ao tipo dicionário do Python, isto é, um conjunto de um ou mais chave-valor. Já o módulo watson_developer_cloud contém os métodos e tipos necessários para acesso às diversas APIS do Watson.</p><br>
+    V) Acesse sua API, abra o terminal e digital jupyter notebook. <br>
+ 
+<p>Prontinho! Vamos carregar os módulos. E utilizaremos basicamente dois módulos: json e watson_developer_cloud.<br>
+O primeiro (json) é utilizado para manipular as informações retornadas pela API. O formato jason (Javascript Object Notation) é amplamente utilizado em acessos a serviços. Ele é equivalente ao tipo dicionário do Python, isto é, um conjunto de um ou mais chave-valor. Já o módulo watson_developer_cloud contém os métodos e tipos necessários para acesso às diversas APIS do Watson.</p><br>
 <h6>Vamos executar o código.</h6>
 import json
 from watson_developer_cloud import NaturalLanguageUnderstandingV1 
@@ -65,3 +69,5 @@ Para visualizar melhor o retorno, utilize o código em seguida:
 <p>Análise: Parsing Sintático, Parsing Discursivo, Etiquetação morfossintática e Identificação de entidades. </p>
 <p>Transformação: Tradução instantanea de idiomas e Sumarização automática.</p>
 <p>Geração textual: Consiste em colocar em linguagem natural algum conhecimento em alguma base de conhecimento.</p>
+
+Fonte: Gabriela Beatriz aluna Pós-graduação em Inteligência Artificial (IA) e Computacional da Faculdade de Informática e Administração Paulista (FIAP).
